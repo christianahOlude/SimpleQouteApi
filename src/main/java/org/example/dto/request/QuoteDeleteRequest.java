@@ -7,8 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @Document
-public class QuoteUpdateRequest {
-    private String text;
-    private String updatedText;
-    private String author;
+public class QuoteDeleteRequest {
+    private String id;
 }
