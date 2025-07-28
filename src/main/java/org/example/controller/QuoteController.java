@@ -1,12 +1,12 @@
 package org.example.controller;
 
 import org.example.data.model.Quote;
-import org.example.dto.request.QuoteDeleteRequest;
 import org.example.dto.request.QuoteRequest;
 import org.example.dto.request.QuoteUpdateRequest;
 import org.example.dto.response.QuoteResponse;
 import org.example.dto.response.QuoteUpdateResponse;
 import org.example.services.QuoteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class QuoteController {
 
     private final QuoteService quoteService;
-
+    @Autowired
     public QuoteController(QuoteService quoteService) {
         this.quoteService = quoteService;
     }
@@ -34,8 +34,9 @@ public class QuoteController {
     }
 
     @DeleteMapping("/deleteQuote")
-    public ResponseEntity<String> deleteQuote(@RequestBody QuoteDeleteRequest quote) {
+    public ResponseEntity<String> deleteQuote(@RequestBody Quote quote) {
         quoteService.deleteQuoteById(quote);
         return new ResponseEntity<>("Quote deleted successfully!", HttpStatus.OK);
     }
 }
+

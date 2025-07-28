@@ -1,10 +1,8 @@
 package org.example.utils;
 
 import org.example.data.model.Quote;
-import org.example.dto.request.QuoteDeleteRequest;
 import org.example.dto.request.QuoteRequest;
 import org.example.dto.request.QuoteUpdateRequest;
-import org.example.dto.response.QuoteDeleteResponse;
 import org.example.dto.response.QuoteResponse;
 import org.example.dto.response.QuoteUpdateResponse;
 
@@ -42,17 +40,5 @@ public class QuoteMapper {
         quoteUpdateResponse.setTimestamp(LocalDateTime.now());
         quoteUpdateResponse.setMessage("Quote Successfully Updated");
         return quoteUpdateResponse;
-    }
-
-    public static Quote mapQuoteRequestToDelete(QuoteDeleteRequest quoteDeleteRequest) {
-        Quote quote = new Quote();
-        quoteDeleteRequest.setId(quote.getId());
-        return quote;
-    }
-
-    public static QuoteDeleteResponse mapQuoteToDeleteResponse(Quote quote) {
-        QuoteDeleteResponse quoteDeleteResponse = new QuoteDeleteResponse();
-        quoteDeleteResponse.setMessage(quote.getId() + " deleted successfully");
-        return quoteDeleteResponse;
     }
 }
